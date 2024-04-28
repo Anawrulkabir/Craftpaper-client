@@ -89,9 +89,7 @@ const Login = () => {
   return (
     <div className="bg-gray-800 text-gray-800 w-full  flex justify-center items-center  py-24 px-4 ">
       <div className="lg:w-1/3 md:w-1/2 w-full p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800">
-        <h1 className="text-2xl font-bold text-center text-blue-700">
-          Sign In
-        </h1>
+        <h1 className="text-2xl font-bold text-center text-blue-700">Login</h1>
         <form
           onSubmit={handleSignIn}
           noValidate=""
