@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+::before,
+::after {
+  font-family: 'Epilogue', sans-serif;
+}
+.bg-main {
+  background-color: #0c482f;
+}
+.text-main {
+  color: #0c482f;
+}

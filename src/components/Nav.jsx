@@ -1,17 +1,32 @@
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
+import toast from 'react-hot-toast'
 
 const Nav = () => {
   const { logOut, user } = useContext(AuthContext)
   //   name, metadata, photo, mail
 
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  console.log(location, navigate)
   const handleSignOut = () => {
     logOut()
   }
+
+  const handleAddItemBtn = () => {
+    toast.success('You need to signin to add your product')
+    setTimeout(() => {
+      navigate(user ? '/addItem' : '/login')
+      location.state == location.pathname
+    }, 2000)
+
+    // navigate(location?.state ? location.state : '/')
+  }
   return (
     <div>
-      <ul className="flex gap-5 text-orange-400 justify-between mx-20 mt-10">
+      <ul className="flex gap-5 text-orange-400 justify-between mx-32 my-10">
         <li>
           <Link to="/">Craft House</Link>
         </li>
@@ -22,11 +37,15 @@ const Nav = () => {
           <Link to="/allItem">All Art & Craft</Link>
         </li>
         <li>
-          <Link to="/craftItem">Add Craft Item</Link>
+          <button onClick={handleAddItemBtn}>Add Item</button>
         </li>
-        <li>
-          <Link to="/allItem"> My Art&Craft List</Link>
-        </li>
+
+        {user && (
+          <li>
+            <Link to="/myItem">My Art & Craft List</Link>
+          </li>
+        )}
+
         {!user && (
           <li>
             <Link to="/login">Login</Link>

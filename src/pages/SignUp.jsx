@@ -102,9 +102,9 @@ const SignUp = () => {
   }
 
   return (
-    <div className="bg-gray-800 text-gray-800 w-full  flex justify-center items-center py-24   px-4 ">
+    <div className="bg-[#B8CDC7] text-gray-800 w-full  flex justify-center items-center py-5   px-4 ">
       <div className="lg:w-1/3 md:w-1/2 w-full p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 lg:mt-10 ">
-        <h1 className="text-2xl font-bold text-center text-blue-700">
+        <h1 className="text-2xl font-bold text-center text-[#457567]">
           Sign Up
         </h1>
         <div>
@@ -217,7 +217,7 @@ const SignUp = () => {
           <button
             className={
               checkbox
-                ? 'block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-indigo-400 dark:bg-indigo-600'
+                ? 'block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-main dark:bg-main'
                 : 'block w-full btn btn-disabled p-3 text-center rounded-sm text-gray-900 dark:text-white'
             }
           >
@@ -271,7 +271,7 @@ const SignUp = () => {
         <p className="text-xs text-center sm:px-6 text-gray-400 dark:text-gray-600">
           Already have an account?
           <Link
-            to="/signin"
+            to="/login"
             rel="noopener noreferrer"
             href="#"
             className="underline text-gray-100 dark:text-gray-800"

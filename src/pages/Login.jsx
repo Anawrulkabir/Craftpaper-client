@@ -17,8 +17,10 @@ const Login = () => {
 
   // const { displayName } = user
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  let navigate = useNavigate()
+  let location = useLocation()
+
+  console.log(location)
 
   const handleSignIn = (e) => {
     e.preventDefault()
@@ -38,6 +40,7 @@ const Login = () => {
         console.log(result)
 
         toast.success('You have successfully logged in your account')
+
         setTimeout(() => {
           navigate(location?.state ? location.state : '/')
         }, 1500)
@@ -64,9 +67,11 @@ const Login = () => {
       .then((result) => {
         console.log(result.user)
         toast.success('You have successfully logged in your account')
-        setTimeout(() => {
-          navigate(location?.state ? location.state : '/')
-        }, 1000)
+        navigate(location?.state ? location.state : '/')
+        // setTimeout(() => {
+        //   navigate(location?.state ? location.state : '/')
+        // }, 1000)
+        console.log(location)
       })
       .catch((error) => console.error(error))
   }
@@ -87,9 +92,9 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-gray-800 text-gray-800 w-full  flex justify-center items-center  py-24 px-4 ">
+    <div className="bg-[#B8CDC7] text-gray-800 w-full  flex justify-center items-center  py-12 px-4 ">
       <div className="lg:w-1/3 md:w-1/2 w-full p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800">
-        <h1 className="text-2xl font-bold text-center text-blue-700">Login</h1>
+        <h1 className="text-2xl font-bold text-center text-[#457567]">Login</h1>
         <form
           onSubmit={handleSignIn}
           noValidate=""
@@ -140,7 +145,7 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-indigo-600 ">
+          <button className="block w-full p-3 text-center rounded-sm dark:text-gray-50 bg-main">
             Sign in
           </button>
         </form>
@@ -191,7 +196,7 @@ const Login = () => {
         <p className="text-xs text-center sm:px-6 dark:text-gray-600">
           Don&apos;t have an account?
           <Link
-            to="/signup"
+            to="/register"
             rel="noopener noreferrer"
             href="#"
             className="underline dark:text-gray-800"

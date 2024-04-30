@@ -10,6 +10,7 @@ import {
   signOut,
 } from 'firebase/auth'
 import auth from '../firebase/firbase.config'
+import { useLocation } from 'react-router-dom'
 
 // exporting context globally
 export const AuthContext = createContext(null)
