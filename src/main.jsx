@@ -11,9 +11,10 @@ import SignUp from './pages/SignUp'
 import AddItem from './pages/AddItem'
 import Details from './pages/Details'
 import Error from './pages/Error'
-import Hero from './components/Hero'
+// import Hero from './components/Hero'
 import Us from './pages/Us'
 import Twoyear from './pages/Twoyear'
+import MyItems from './components/MyItems'
 
 const router = createBrowserRouter([
   {
@@ -24,12 +25,9 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+        loader: () => fetch('https://craft-house-server.vercel.app/items'),
         // loader: () => fetch('http://localhost:3000/items'),
       },
-      // {
-      //   path: '/',
-      //   element: <Hero />,
-      // },
       {
         path: '/login',
         element: <Login />,
@@ -42,12 +40,19 @@ const router = createBrowserRouter([
         path: '/addItem',
         element: <AddItem />,
       },
-      // {
-      //   path: '/details/:id',
-      //   element: <Details />,
-      //   loader: ({ params }) =>
-      //     fetch(`http://localhost:3000/items/${params.id}`),
-      // },
+      {
+        path: '/details/:id',
+        element: <Details />,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:3000/items/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`https://craft-house-server.vercel.app/items/${params.id}`),
+      },
+      {
+        path: '/myItem',
+        element: <MyItems />,
+        loader: () => fetch('https://craft-house-server.vercel.app/items'),
+      },
     ],
   },
   {

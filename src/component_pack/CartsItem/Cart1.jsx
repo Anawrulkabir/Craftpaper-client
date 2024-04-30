@@ -1,6 +1,6 @@
 const Cart1 = () => {
   return (
-    <div>
+    <div className="">
       <div className="border rounded-lg">
         {/* <img src={item.photo} alt="" /> */}
         <img src="../../assets/react.svg" alt="" />

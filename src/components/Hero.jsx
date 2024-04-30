@@ -1,5 +1,4 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { FaArrowRightLong } from 'react-icons/fa6'
 
 // Import Swiper styles
 import 'swiper/css'

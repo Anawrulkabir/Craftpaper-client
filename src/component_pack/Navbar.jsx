@@ -36,6 +36,9 @@ const Navbar = () => {
       <div>
         <ul className="flex gap-4 justify-end px-8 bg-main py-[9px] text-white text-sm font-light">
           <li>
+            <Link to="/allItem">All Art & Craft</Link>
+          </li>
+          <li>
             <a onClick={handleAddItemBtn} className="hover:cursor-pointer">
               Publish Your Product
             </a>
