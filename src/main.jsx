@@ -11,7 +11,6 @@ import SignUp from './pages/SignUp'
 import AddItem from './pages/AddItem'
 import Details from './pages/Details'
 import Error from './pages/Error'
-import LoadingWrapper from './component_pack/LoadingRapper/LoadingWrapper'
 import PrivateRoute from './Routes/PrivateRoute'
 
 // import MyItems from './components/MyItems'
@@ -38,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/addItem',
-        element: <AddItem />,
+        element: (
+          <PrivateRoute>
+            <AddItem></AddItem>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/details/:id',

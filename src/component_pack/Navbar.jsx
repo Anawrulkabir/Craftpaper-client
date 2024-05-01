@@ -3,7 +3,7 @@ import { IoIosGlobe } from 'react-icons/io'
 import '../uitils/HoverAnimation/hover.css'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 const Navbar = () => {
   const { user } = useContext(AuthContext)
@@ -22,9 +22,9 @@ const Navbar = () => {
     // setTimeout(() => {
 
     !user && toast.success('You need to signin to add your product')
-    setTimeout(() => {
-      navigate(user ? '/addItem' : '/login')
-    }, 2000)
+    // setTimeout(() => {
+    //   navigate(user ? '/addItem' : '/login')
+    // }, 2000)
 
     // location.state == location.pathname
     // }, 3000)
@@ -39,9 +39,13 @@ const Navbar = () => {
             <Link to="/allItem">All Art & Craft</Link>
           </li>
           <li>
-            <a onClick={handleAddItemBtn} className="hover:cursor-pointer">
+            <Link
+              // onClick={handleAddItemBtn}
+              className="hover:cursor-pointer"
+              to="/addItem"
+            >
               Publish Your Product
-            </a>
+            </Link>
           </li>
           {user && (
             <li>

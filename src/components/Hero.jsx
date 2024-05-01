@@ -11,6 +11,7 @@ import { EffectCards, Autoplay } from 'swiper/modules'
 import Categories from './Categories'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const { user } = useContext(AuthContext)
@@ -100,9 +101,12 @@ const Hero = () => {
                 <br />
                 products and brands you’re most interested in.
               </p>
-              <button className="text-2xl mt-12 btn bg-main border-0 text-zinc-300 px-10  hover:bg-green-800">
+              <a
+                href="#Our-products"
+                className="text-2xl mt-12 btn bg-main border-0 text-zinc-300 px-10  hover:bg-green-800"
+              >
                 Browse Products
-              </button>
+              </a>
             </div>
           )}
         </div>
