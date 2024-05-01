@@ -11,10 +11,10 @@ import SignUp from './pages/SignUp'
 import AddItem from './pages/AddItem'
 import Details from './pages/Details'
 import Error from './pages/Error'
-// import Hero from './components/Hero'
-import Us from './pages/Us'
-import Twoyear from './pages/Twoyear'
-import MyItems from './components/MyItems'
+import LoadingWrapper from './component_pack/LoadingRapper/LoadingWrapper'
+import PrivateRoute from './Routes/PrivateRoute'
+
+// import MyItems from './components/MyItems'
 
 const router = createBrowserRouter([
   {
@@ -42,17 +42,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/details/:id',
-        element: <Details />,
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
         // loader: ({ params }) =>
         //   fetch(`http://localhost:3000/items/${params.id}`),
         loader: ({ params }) =>
           fetch(`https://craft-house-server.vercel.app/items/${params.id}`),
       },
-      {
-        path: '/myItem',
-        element: <MyItems />,
-        loader: () => fetch('https://craft-house-server.vercel.app/items'),
-      },
+      // {
+      //   path: '/myItem',
+      //   element: <MyItems />,
+      //   loader: () => fetch('https://craft-house-server.vercel.app/items'),
+      // },
     ],
   },
 ])
@@ -61,6 +65,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+      {/* <LoadingWrapper></LoadingWrapper> */}
     </AuthProvider>
   </React.StrictMode>
 )

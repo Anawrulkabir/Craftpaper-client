@@ -10,10 +10,10 @@ const Navbar = () => {
   const { logOut } = useContext(AuthContext)
   //   name, metadata, photo, mail
 
-  const location = useLocation()
+  // const location = useLocation()
   const navigate = useNavigate()
 
-  console.log(location, navigate)
+  // console.log(location, navigate)
   const handleSignOut = () => {
     logOut()
   }

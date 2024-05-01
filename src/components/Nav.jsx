@@ -10,7 +10,7 @@ const Nav = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  console.log(location, navigate)
+  // console.log(location, navigate)
   const handleSignOut = () => {
     logOut()
   }

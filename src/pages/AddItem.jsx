@@ -179,7 +179,7 @@ const AddItem = () => {
           />
         </label>
       </form>
-      <Toaster />
+      <Toaster position="right" />
     </div>
   )
 }
