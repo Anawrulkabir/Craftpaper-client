@@ -3,11 +3,14 @@ import { IoIosGlobe } from 'react-icons/io'
 import '../uitils/HoverAnimation/hover.css'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 const Navbar = () => {
   const { user } = useContext(AuthContext)
   const { logOut } = useContext(AuthContext)
+
+  const location = useLocation()
+  // const navigate = useNavigate()
   //   name, metadata, photo, mail
 
   // const location = useLocation()
@@ -16,6 +19,10 @@ const Navbar = () => {
   // console.log(location, navigate)
   const handleSignOut = () => {
     logOut()
+  }
+
+  const handleGoBack = () => {
+    window.history.back()
   }
 
   // const handleAddItemBtn = () => {
@@ -35,6 +42,19 @@ const Navbar = () => {
     <div>
       <div>
         <ul className="flex gap-4 justify-end px-8 bg-main py-[9px] text-white text-sm font-light">
+          {location.pathname !== '/' && (
+            <li className="flex-1 text-zinc-300">
+              <button
+                onClick={handleGoBack}
+                // to={location.state}
+                // to={location.state ? location.state : '/'}
+                className="inline-block"
+              >
+                Back
+              </button>
+            </li>
+          )}
+
           <li>
             <Link to="/allItem">All Art & Craft</Link>
           </li>
