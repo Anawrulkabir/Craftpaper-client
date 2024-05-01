@@ -11,7 +11,7 @@ import { EffectCards, Autoplay } from 'swiper/modules'
 import Categories from './Categories'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const { user } = useContext(AuthContext)

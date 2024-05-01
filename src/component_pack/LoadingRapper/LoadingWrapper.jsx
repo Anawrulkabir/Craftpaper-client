@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Grid } from 'react-loader-spinner'
 import { useLocation } from 'react-router-dom'
 
+// eslint-disable-next-line react/prop-types
 const LoadingWrapper = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const location = useLocation()

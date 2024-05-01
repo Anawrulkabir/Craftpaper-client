@@ -3,34 +3,34 @@ import { IoIosGlobe } from 'react-icons/io'
 import '../uitils/HoverAnimation/hover.css'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
-import { Link, useNavigate } from 'react-router-dom'
-import toast, { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 const Navbar = () => {
   const { user } = useContext(AuthContext)
   const { logOut } = useContext(AuthContext)
   //   name, metadata, photo, mail
 
   // const location = useLocation()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   // console.log(location, navigate)
   const handleSignOut = () => {
     logOut()
   }
 
-  const handleAddItemBtn = () => {
-    // setTimeout(() => {
+  // const handleAddItemBtn = () => {
+  // setTimeout(() => {
 
-    !user && toast.success('You need to signin to add your product')
-    // setTimeout(() => {
-    //   navigate(user ? '/addItem' : '/login')
-    // }, 2000)
+  // !user && toast.success('You need to signin to add your product')
+  // setTimeout(() => {
+  //   navigate(user ? '/addItem' : '/login')
+  // }, 2000)
 
-    // location.state == location.pathname
-    // }, 3000)
-    // toast.success('You need to signin to add your product')
-    // navigate(location?.state ? location.state : '/')
-  }
+  // location.state == location.pathname
+  // }, 3000)
+  // toast.success('You need to signin to add your product')
+  // navigate(location?.state ? location.state : '/')
+  // }
   return (
     <div>
       <div>
@@ -49,7 +49,7 @@ const Navbar = () => {
           </li>
           {user && (
             <li>
-              <Link to="/myItem">My Art & Craft List</Link>
+              <Link to={`/user/${user.email}`}>My Art & Craft List</Link>
             </li>
           )}
           <li className="flex gap-2 items-center">

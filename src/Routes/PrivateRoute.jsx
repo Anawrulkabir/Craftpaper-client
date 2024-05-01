@@ -1,13 +1,13 @@
 import { useContext, useState, useEffect } from 'react'
 import { Grid } from 'react-loader-spinner'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import { Navigate, useLocation } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 
 // eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [isLoaded, setIsLoaded] = useState(false)
   const location = useLocation()
 

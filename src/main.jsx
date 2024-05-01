@@ -13,6 +13,7 @@ import Details from './pages/Details'
 import Error from './pages/Error'
 import PrivateRoute from './Routes/PrivateRoute'
 import AllItem from './pages/AllItem'
+import MyItem from './pages/MyItem'
 
 // import MyItems from './components/MyItems'
 
@@ -60,6 +61,16 @@ const router = createBrowserRouter([
         path: '/allItem',
         element: <AllItem />,
         loader: () => fetch('https://craft-house-server.vercel.app/items'),
+      },
+      {
+        path: '/user/:email',
+        element: (
+          <PrivateRoute>
+            <MyItem></MyItem>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://craft-house-server.vercel.app/user/${params.email}`),
       },
     ],
   },
