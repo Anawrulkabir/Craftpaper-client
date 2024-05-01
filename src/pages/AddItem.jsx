@@ -55,7 +55,7 @@ const AddItem = () => {
 
   return (
     <div className="h-screen">
-      <p className="text-5xl text-center mt-20 mb-10 text-green-400">
+      <p className="text-5xl text-center mt-20 mb-10 text-main font-bold">
         Add Craft Items
       </p>
 
@@ -175,7 +175,7 @@ const AddItem = () => {
           <input
             type="submit"
             value="Add this item"
-            className="btn btn-primary mt-2 text-white"
+            className="btn bg-main  mt-5 text-lg text-white"
           />
         </label>
       </form>
