@@ -54,8 +54,8 @@ const AddItem = () => {
   }
 
   return (
-    <div className="h-screen">
-      <p className="text-5xl text-center mt-20 mb-10 text-main font-bold">
+    <div className="h-screen bg-[#EEF9F7]">
+      <p className="text-5xl text-center pt-20 mb-10 text-main font-bold">
         Add Craft Items
       </p>
 

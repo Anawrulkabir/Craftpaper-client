@@ -11,14 +11,15 @@ import { EffectCards, Autoplay } from 'swiper/modules'
 import Categories from './Categories'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
+import { Link } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const { user } = useContext(AuthContext)
   return (
-    <div>
+    <div className="">
       <div className="hero min-h-[calc(100vh-250px)] bg-[#B8CDC7] text-main px-3">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row-reverse ">
           {!user && (
             <div className="flex-1">
               <h1 className="text-5xl font-bold tracking-tighter">
@@ -28,12 +29,18 @@ const Hero = () => {
                 We provide you with the information and inspiration you need to
                 design your dream faster, smarter and greener.
               </p>
-              <button className="btn w-full bg-main text-zinc-100 border-none text-medium">
+              <Link
+                to="/register"
+                className="btn w-full bg-main text-zinc-100 border-none text-medium hover:bg-green-800"
+              >
                 Free sign up
-              </button>
-              <button className="text-center w-full text-main mt-5">
+              </Link>
+              <Link
+                to="/addItem"
+                className="text-center w-full text-main mt-5 text-base"
+              >
                 Publish your products
-              </button>
+              </Link>
             </div>
           )}
 

@@ -1,7 +1,61 @@
+import { useContext } from 'react'
 import { useLoaderData } from 'react-router-dom'
+import { AuthContext } from '../provider/AuthProvider'
+import toast from 'react-hot-toast'
 
 const Details = () => {
   const item = useLoaderData()
+  const { user } = useContext(AuthContext)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const form = e.target
+    const image = form.photo.value
+    const name = form.name.value
+    const category = form.subcategory.value
+    const description = form.description.value
+    const price = form.price.value
+    const rating = form.rating.value
+    const time = form.time.value
+    const username = form.username.value
+    const email = form.email.value
+    const customization = form.elements.customization.checked
+    const status = form.elements.status.checked
+
+    const craftItem = {
+      image,
+      name,
+      category,
+      description,
+      price,
+      rating,
+      time,
+      username,
+      email,
+      customization,
+      status,
+      user,
+    }
+
+    fetch(`https://craft-house-server.vercel.app/items/${item._id}/update`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(craftItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.insertedId) {
+          toast.success('Successfull Updated this Craft item')
+        }
+      })
+
+    console.log(craftItem)
+  }
+
   return (
     // <div className="max-h-[cal(100vh - 300px)]">
     //   <div className="flex  gap-10 p-10 ">
@@ -41,9 +95,10 @@ const Details = () => {
                   Available : {''}
                   {item.status ? 'Stock Available' : 'Request Only Product'}
                 </div>
+                <div>Seller : {item.email} </div>
               </div>
             </a>
-            <div className="flex gap-4 pt-6">
+            <div className="flex gap-4 pt-6 items-center ">
               <div className="border rounded bg-main  text-white px-3 py-2">
                 <button>Add To Favourite</button>
               </div>
@@ -52,6 +107,150 @@ const Details = () => {
                   {item.status ? 'Add to Cart' : 'Request for Stock'}
                 </button>
               </div>
+              {user.email === item.email && (
+                <div className="border rounded bg-green-600  text-white px-3 py-2">
+                  <button
+                    onClick={() =>
+                      document.getElementById('my_modal_update').showModal()
+                    }
+                  >
+                    Update
+                  </button>
+                  <dialog id="my_modal_update" className="modal">
+                    <div className=" p-6 rounded-xl text-white bg-[#D5E3E0] bg-opacity-65">
+                      <form
+                        onSubmit={handleSubmit}
+                        className="flex flex-col justify-center items-center gap-y-3 gap-x-5"
+                      >
+                        <div className="flex gap-4 ">
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="photo"
+                              placeholder={item.image}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="name"
+                              placeholder={item.name}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="subcategory"
+                              placeholder={item.category}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                        </div>
+                        <div className="flex gap-4">
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="description"
+                              placeholder={item.description}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="price"
+                              placeholder={item.price}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="rating"
+                              placeholder={item.rating}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                        </div>
+                        <div className="flex gap-4">
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="time"
+                              placeholder={item.time}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="username"
+                              placeholder={item.username}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                          <label className="form-control w-full max-w-xs">
+                            <input
+                              type="text"
+                              name="email"
+                              placeholder={item.email}
+                              className="input input-bordered w-full max-w-xs"
+                            />
+                          </label>
+                        </div>
+                        <div className="flex gap-4">
+                          <div className="form-control flex items-center flex-row gap-5 border rounded-full px-10">
+                            <p className="text-main">Customization</p>
+
+                            <label className="cursor-pointer label flex items-center justify-center gap-1">
+                              <span className="label-text">No</span>
+                              <input
+                                type="checkbox"
+                                className="toggle"
+                                name="customization"
+                              />
+                              <span className="label-text">Yes</span>
+                            </label>
+                          </div>
+                          <div className="form-control flex items-center flex-row gap-5 border rounded-full px-10 ">
+                            <p className="text-main">Status</p>
+
+                            <label className="cursor-pointer label flex items-center justify-center gap-1">
+                              <span className="label-text ">In Stock</span>
+                              <input
+                                type="checkbox"
+                                className="toggle"
+                                name="status"
+                              />
+                              <span className="label-text">Made to order</span>
+                            </label>
+                          </div>
+                        </div>
+
+                        <label className="form-control w-full max-w-xs">
+                          <input
+                            type="submit"
+                            value="Update Item"
+                            className="btn bg-main border-0 hover:bg-green-800 mt-5 text-lg text-white"
+                          />
+                        </label>
+                      </form>
+                      <div className="modal-action">
+                        <form method="dialog">
+                          <button className="btn">Close</button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
+                </div>
+              )}
+              {user.email === item.email && (
+                <div className="border rounded bg-red-500  text-white px-3 py-2">
+                  <button>Delete</button>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -3,8 +3,10 @@ import { IoIosGlobe } from 'react-icons/io'
 import '../uitils/HoverAnimation/hover.css'
 import { useContext } from 'react'
 import { AuthContext } from '../provider/AuthProvider'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
+import { MdOutlineKeyboardArrowLeft } from 'react-icons/md'
+
 const Navbar = () => {
   const { user } = useContext(AuthContext)
   const { logOut } = useContext(AuthContext)
@@ -39,7 +41,7 @@ const Navbar = () => {
   // navigate(location?.state ? location.state : '/')
   // }
   return (
-    <div>
+    <div className="bg-[#D5E3E0]">
       <div>
         <ul className="flex gap-4 justify-end px-8 bg-main py-[9px] text-white text-sm font-light">
           {location.pathname !== '/' && (
@@ -50,7 +52,10 @@ const Navbar = () => {
                 // to={location.state ? location.state : '/'}
                 className="inline-block"
               >
-                Back
+                <div className="flex items-center gap-[2px]">
+                  <MdOutlineKeyboardArrowLeft className="text-xl" />{' '}
+                  <div>Back</div>
+                </div>
               </button>
             </li>
           )}
