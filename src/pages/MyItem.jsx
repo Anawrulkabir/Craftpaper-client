@@ -1,10 +1,14 @@
 import Masonry from 'react-masonry-css'
 import { Link, useLoaderData } from 'react-router-dom'
 import { PiDotsThreeCircleLight } from 'react-icons/pi'
+import toast from 'react-hot-toast'
+import { useState } from 'react'
 // import toast from 'react-hot-toast'
 
 const MyItem = () => {
-  const items = useLoaderData()
+  const loadedItems = useLoaderData()
+
+  const [items, setItems] = useState(loadedItems)
 
   const breakpoints = {
     default: 3,
@@ -60,6 +64,22 @@ const MyItem = () => {
   //   console.log(craftItem)
   // }
 
+  const handleDelete = (_id) => {
+    fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // setItem(data)
+        console.log(data)
+        if (data.deletedCount > 0) {
+          toast.success('Successfull Deleted this Craft item')
+          const remaining = items.filter((item) => item._id !== _id)
+          setItems(remaining)
+        }
+      })
+  }
+
   return (
     <div>
       <p
@@ -75,7 +95,7 @@ const MyItem = () => {
         {items.map((item) => (
           <div key={item._id} className="mb-6">
             <Link
-              to={`/details/${item._id}`}
+              // to={`/details/${item._id}`}
               key={item._id}
               className=" hover:scale-[99%] transition duration-900 "
             >
@@ -90,7 +110,7 @@ const MyItem = () => {
                     alt="Shoes"
                     className=" w-full"
                   />
-                  {/* <div className="absolute top-4 right-4 ">
+                  <div className="absolute top-4 right-4 ">
                     <div className="dropdown dropdown-end">
                       <div tabIndex={0} role="button" className=" m-1">
                         <PiDotsThreeCircleLight className="text-3xl bg-transparent text-green-700" />
@@ -99,25 +119,30 @@ const MyItem = () => {
                         tabIndex={0}
                         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                       >
-                        <li>
-                          <Link
+                        {/* <li>
+                          <button
                             // to={`/items/${item._id}/update`}
                             className=""
-                            // onClick={() =>
-                            //   document
-                            //     .getElementById('my_modal_update')
-                            //     .showModal()
-                            // }
+                            onClick={() =>
+                              document
+                                .getElementById('my_modal_update')
+                                .showModal()
+                            }
                           >
                             Update
-                          </Link>
-                        </li>
+                          </button>
+                        </li> */}
                         <li>
-                          <a>Delete</a>
+                          <button
+                            onClick={() => handleDelete(item._id)}
+                            className="bg-red-600 text-white font-bold hover:bg-red-500"
+                          >
+                            Delete
+                          </button>
                         </li>
                       </ul>
                     </div>
-                  </div> */}
+                  </div>
                 </figure>
                 <div className="card-body">
                   <div className="card-actions justify-start">
@@ -131,14 +156,14 @@ const MyItem = () => {
                       {item.price}
                     </p>
                   </div>
-                  {/* <div className="flex justify-center">
+                  <div className="flex justify-center">
                     <Link
                       to={`/details/${item._id}`}
                       className="text-center p-0  text-blue-500 font-extralight hover:font-light tracking-wider inline-block "
                     >
                       See Details
                     </Link>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </Link>

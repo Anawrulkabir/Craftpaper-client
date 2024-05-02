@@ -6,7 +6,7 @@ import toast, { Toaster } from 'react-hot-toast'
 const Details = () => {
   const loadedItem = useLoaderData()
   const [item, setItem] = useState(loadedItem)
-  console.log(item._id)
+  // console.log(item._id)
   const { user } = useContext(AuthContext)
 
   const { _id } = loadedItem
@@ -62,19 +62,29 @@ const Details = () => {
     // console.log(craftItem)
   }
 
-  const handleDelete = () => {
-    fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setItem(data)
-        console.log(data)
-        if (data.deletedCount > 0) {
-          toast.success('Successfull Deleted this Craft item')
-        }
-      })
-  }
+  // const [items, setItems] = useState([])
+  // fetch('https://craft-house-server.vercel.app/items')
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     setItems(data)
+  //   })
+
+  // const handleDelete = () => {
+  //   fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
+  //     method: 'DELETE',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // setItem(data)
+  //       console.log(data)
+  //       if (data.deletedCount > 0) {
+  //         toast.success('Successfull Deleted this Craft item')
+  //         const remaining = items.filter((item) => item._id !== _id)
+  //         setItems(remaining)
+  //       }
+  //     })
+  // }
+
   return (
     // <div className="max-h-[cal(100vh - 300px)]">
     //   <div className="flex  gap-10 p-10 ">
@@ -268,7 +278,7 @@ const Details = () => {
               )}
               {user.email === item.email && (
                 <div className="border rounded bg-red-500  text-white px-3 py-2">
-                  <button onClick={handleDelete}>Delete</button>
+                  <button>Delete</button>
                 </div>
               )}
             </div>
