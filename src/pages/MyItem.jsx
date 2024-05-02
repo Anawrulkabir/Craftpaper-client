@@ -66,7 +66,7 @@ const MyItem = () => {
         className="text-main font-bold text-3xl  my-8 mb-12 text-center"
         id="Our-products"
       >
-        All Products
+        My Items
       </p>
       <Masonry
         className="my-masonry-grid px-24 space-x-12 "
@@ -75,7 +75,7 @@ const MyItem = () => {
         {items.map((item) => (
           <div key={item._id} className="mb-6">
             <Link
-              // to={`/details/${item._id}`}
+              to={`/details/${item._id}`}
               key={item._id}
               className=" hover:scale-[99%] transition duration-900 "
             >
@@ -90,7 +90,7 @@ const MyItem = () => {
                     alt="Shoes"
                     className=" w-full"
                   />
-                  <div className="absolute top-4 right-4 ">
+                  {/* <div className="absolute top-4 right-4 ">
                     <div className="dropdown dropdown-end">
                       <div tabIndex={0} role="button" className=" m-1">
                         <PiDotsThreeCircleLight className="text-3xl bg-transparent text-green-700" />
@@ -117,7 +117,7 @@ const MyItem = () => {
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </div> */}
                 </figure>
                 <div className="card-body">
                   <div className="card-actions justify-start">
@@ -131,14 +131,14 @@ const MyItem = () => {
                       {item.price}
                     </p>
                   </div>
-                  <div className="flex justify-center">
+                  {/* <div className="flex justify-center">
                     <Link
                       to={`/details/${item._id}`}
                       className="text-center p-0  text-blue-500 font-extralight hover:font-light tracking-wider inline-block "
                     >
                       See Details
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Link>

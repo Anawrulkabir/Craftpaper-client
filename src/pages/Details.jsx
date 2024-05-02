@@ -1,14 +1,19 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
-import toast from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Details = () => {
-  const item = useLoaderData()
+  const loadedItem = useLoaderData()
+  const [item, setItem] = useState(loadedItem)
+  console.log(item._id)
   const { user } = useContext(AuthContext)
+
+  const { _id } = loadedItem
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    // console.log(item._id)
 
     const form = e.target
     const image = form.photo.value
@@ -38,7 +43,7 @@ const Details = () => {
       user,
     }
 
-    fetch(`https://craft-house-server.vercel.app/items/${item._id}/update`, {
+    fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -47,15 +52,29 @@ const Details = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setItem(data)
         console.log(data)
         if (data.insertedId) {
           toast.success('Successfull Updated this Craft item')
         }
       })
 
-    console.log(craftItem)
+    // console.log(craftItem)
   }
 
+  const handleDelete = () => {
+    fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setItem(data)
+        console.log(data)
+        if (data.deletedCount > 0) {
+          toast.success('Successfull Deleted this Craft item')
+        }
+      })
+  }
   return (
     // <div className="max-h-[cal(100vh - 300px)]">
     //   <div className="flex  gap-10 p-10 ">
@@ -117,7 +136,7 @@ const Details = () => {
                     Update
                   </button>
                   <dialog id="my_modal_update" className="modal">
-                    <div className=" p-6 rounded-xl text-white bg-[#D5E3E0] bg-opacity-65">
+                    <div className=" p-6 rounded-xl text-black bg-[#D5E3E0] bg-opacity-65">
                       <form
                         onSubmit={handleSubmit}
                         className="flex flex-col justify-center items-center gap-y-3 gap-x-5"
@@ -127,7 +146,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="photo"
-                              placeholder={item.image}
+                              defaultValue={item.image}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -135,7 +154,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="name"
-                              placeholder={item.name}
+                              defaultValue={item.name}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -143,7 +162,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="subcategory"
-                              placeholder={item.category}
+                              defaultValue={item.category}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -153,7 +172,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="description"
-                              placeholder={item.description}
+                              defaultValue={item.description}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -161,7 +180,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="price"
-                              placeholder={item.price}
+                              defaultValue={item.price}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -169,7 +188,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="rating"
-                              placeholder={item.rating}
+                              defaultValue={item.rating}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -179,7 +198,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="time"
-                              placeholder={item.time}
+                              defaultValue={item.time}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -187,7 +206,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="username"
-                              placeholder={item.username}
+                              defaultValue={item.username}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -195,7 +214,7 @@ const Details = () => {
                             <input
                               type="text"
                               name="email"
-                              placeholder={item.email}
+                              defaultValue={item.email}
                               className="input input-bordered w-full max-w-xs"
                             />
                           </label>
@@ -244,11 +263,12 @@ const Details = () => {
                       </div>
                     </div>
                   </dialog>
+                  <Toaster />
                 </div>
               )}
               {user.email === item.email && (
                 <div className="border rounded bg-red-500  text-white px-3 py-2">
-                  <button>Delete</button>
+                  <button onClick={handleDelete}>Delete</button>
                 </div>
               )}
             </div>
