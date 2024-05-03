@@ -6,6 +6,7 @@ import { AuthContext } from '../provider/AuthProvider'
 import { Link, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md'
+import { HiMenuAlt2 } from 'react-icons/hi'
 
 const Navbar = () => {
   const { user } = useContext(AuthContext)
@@ -42,7 +43,7 @@ const Navbar = () => {
   // }
   return (
     <div className="bg-[#D5E3E0]">
-      <div className="hidden lg:block">
+      <div className="">
         <ul className="flex gap-4 justify-end px-8 bg-main py-[9px] text-white text-sm font-light">
           {location.pathname !== '/' && (
             <li className="flex-1 text-zinc-300">
@@ -90,29 +91,6 @@ const Navbar = () => {
 
       <div className="navbar lg:px-8 flex justify-between items-center  lg:flex-row ">
         <div className="flex gap-12">
-          <div className="drawer lg:hidden block">
-            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content bg-green-200 opacity-50">
-              {/* Page content here */}
-              <label htmlFor="my-drawer" className=" drawer-button"></label>
-            </div>
-            <div className="drawer-side">
-              <label
-                htmlFor="my-drawer"
-                aria-label="close sidebar"
-                className="drawer-overlay"
-              ></label>
-              <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                {/* Sidebar content here */}
-                <li>
-                  <a>Sidebar Item 1</a>
-                </li>
-                <li>
-                  <a>Sidebar Item 2</a>
-                </li>
-              </ul>
-            </div>
-          </div>
           <Link
             to="/"
             className=" text-3xl tracking-tighter font-extrabold leading-[3px] relative"

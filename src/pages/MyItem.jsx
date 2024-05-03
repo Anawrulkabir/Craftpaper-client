@@ -13,7 +13,7 @@ const MyItem = () => {
   const breakpoints = {
     default: 3,
     1100: 2,
-    700: 1,
+    700: 2,
   }
   // const handleSubmit = (e) => {
   //   e.preventDefault()
@@ -88,7 +88,7 @@ const MyItem = () => {
       >
         My Items
       </p>
-      <Masonry
+      {/* <Masonry
         className="my-masonry-grid px-24 space-x-12 "
         breakpointCols={breakpoints}
       >
@@ -119,19 +119,6 @@ const MyItem = () => {
                         tabIndex={0}
                         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                       >
-                        {/* <li>
-                          <button
-                            // to={`/items/${item._id}/update`}
-                            className=""
-                            onClick={() =>
-                              document
-                                .getElementById('my_modal_update')
-                                .showModal()
-                            }
-                          >
-                            Update
-                          </button>
-                        </li> */}
                         <li>
                           <button
                             onClick={() => handleDelete(item._id)}
@@ -167,134 +154,59 @@ const MyItem = () => {
                 </div>
               </div>
             </Link>
-            {/* <dialog id="my_modal_update" className="modal">
-              <div className=" p-6 rounded-xl text-white bg-[#D5E3E0] bg-opacity-65">
-                <form
-                  onSubmit={handleSubmit}
-                  className="flex flex-col justify-center items-center gap-y-3 gap-x-5"
-                >
-                  <div className="flex gap-4 ">
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="photo"
-                        placeholder={item.image}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder={item.name}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="subcategory"
-                        placeholder={item.category}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
+          </div>
+        ))}
+      </Masonry> */}
+      <Masonry
+        className="my-masonry-grid lg:px-24 px-4 lg:space-x-12 space-x-2 "
+        breakpointCols={breakpoints}
+      >
+        {items.map((item) => (
+          <div key={item._id} className="lg:mb-6 mb-3">
+            <Link
+              to={`/details/${item._id}`}
+              key={item._id}
+              className=" hover:scale-[99%] transition duration-900 "
+            >
+              <div className="card shadow-xl  bg-[#eef9f7]">
+                <figure>
+                  <img
+                    src={
+                      item.image
+                        ? item.image
+                        : 'https://w7.pngwing.com/pngs/460/672/png-transparent-page-not-found-illustration-thumbnail.png'
+                    }
+                    alt="Shoes"
+                    className=" w-full"
+                  />
+                </figure>
+                <div className="lg:card-body border p-3">
+                  {/* <div className="card-actions justify-start "> */}
+                  <div className="badge badge-outline  text-zinc-800 lg:text-xs border-green-500 text-[10px] mb-2 lg:mb-0">
+                    {item.category}
                   </div>
-                  <div className="flex gap-4">
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="description"
-                        placeholder={item.description}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="price"
-                        placeholder={item.price}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="rating"
-                        placeholder={item.rating}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
+                  {/* <div className="badge badge-outline">Products</div> */}
+                  {/* </div> */}
+                  <h2 className="card-title text-main font-light lg:font-extrabold">
+                    {item.name}
+                    {/* <div className="badge badge-secondary">NEW</div> */}
+                  </h2>
+                  <div className="flex justify-center lg:justify-end  mt-3 lg:mt-0">
+                    <p className="text-orange-500 font-normal text-xl  lg:text-lg text-right">
+                      {item.price}
+                    </p>
                   </div>
-                  <div className="flex gap-4">
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="time"
-                        placeholder={item.time}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="username"
-                        placeholder={item.username}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
-                    <label className="form-control w-full max-w-xs">
-                      <input
-                        type="text"
-                        name="email"
-                        placeholder={item.email}
-                        className="input input-bordered w-full max-w-xs"
-                      />
-                    </label>
+                  <div className="flex justify-center">
+                    <Link
+                      to={`/details/${item._id}`}
+                      className="text-center p-0  text-blue-500 font-extralight hover:font-light tracking-wider inline-block "
+                    >
+                      See Details
+                    </Link>
                   </div>
-                  <div className="flex gap-4">
-                    <div className="form-control flex items-center flex-row gap-5 border rounded-full px-10">
-                      <p className="text-main">Customization</p>
-
-                      <label className="cursor-pointer label flex items-center justify-center gap-1">
-                        <span className="label-text">No</span>
-                        <input
-                          type="checkbox"
-                          className="toggle"
-                          name="customization"
-                        />
-                        <span className="label-text">Yes</span>
-                      </label>
-                    </div>
-                    <div className="form-control flex items-center flex-row gap-5 border rounded-full px-10 ">
-                      <p className="text-main">Status</p>
-
-                      <label className="cursor-pointer label flex items-center justify-center gap-1">
-                        <span className="label-text ">In Stock</span>
-                        <input
-                          type="checkbox"
-                          className="toggle"
-                          name="status"
-                        />
-                        <span className="label-text">Made to order</span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <label className="form-control w-full max-w-xs">
-                    <input
-                      type="submit"
-                      value="Update Item"
-                      className="btn bg-main border-0 hover:bg-green-800 mt-5 text-lg text-white"
-                    />
-                  </label>
-                </form>
-                <div className="modal-action">
-                  <form method="dialog">
-                    <button className="btn">Close</button>
-                  </form>
                 </div>
               </div>
-            </dialog> */}
+            </Link>
           </div>
         ))}
       </Masonry>
