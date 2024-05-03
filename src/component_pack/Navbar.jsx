@@ -90,7 +90,7 @@ const Navbar = () => {
       </div>
 
       <div className="navbar bg-main text-zinc-200 lg:hidden block">
-        <div className="navbar-start">
+        <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -130,6 +130,23 @@ const Navbar = () => {
                 </li>
               )}
             </ul>
+          </div>
+          <div className="">
+            {location.pathname !== '/' && (
+              <div className=" text-zinc-300">
+                <button
+                  onClick={handleGoBack}
+                  // to={location.state}
+                  // to={location.state ? location.state : '/'}
+                  className="inline-block"
+                >
+                  <div className="flex items-center gap-[2px] justify-center pt-1">
+                    <MdOutlineKeyboardArrowLeft className="text-xl" />{' '}
+                    <div>Back</div>
+                  </div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className="navbar-center hidden lg:flex text-black">

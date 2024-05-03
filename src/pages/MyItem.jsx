@@ -1,6 +1,6 @@
 import Masonry from 'react-masonry-css'
 import { Link, useLoaderData } from 'react-router-dom'
-import { PiDotsThreeCircleLight } from 'react-icons/pi'
+// import { PiDotsThreeCircleLight } from 'react-icons/pi'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
 // import toast from 'react-hot-toast'
@@ -196,10 +196,10 @@ const MyItem = () => {
                       {item.price}
                     </p>
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center lg:pt-0 pt-2">
                     <Link
                       to={`/details/${item._id}`}
-                      className="text-center p-0  text-blue-500 font-extralight hover:font-light tracking-wider inline-block "
+                      className="text-center p-0  text-blue-500 font-extralight hover:font-light tracking-wider inline-block lg:text-xs text-[8px] hover:underline"
                     >
                       See Details
                     </Link>
