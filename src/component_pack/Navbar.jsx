@@ -192,7 +192,7 @@ const Navbar = () => {
         <div className="flex gap-12">
           <Link
             to="/"
-            className=" lg:text-3xl text-2xl tracking-tighter font-extrabold leading-[3px] relative"
+            className=" lg:text-3xl text-2xl tracking-tighter font-extrabold leading-[3px] relative mx-3"
           >
             craftpaper
             <span className="text-[6px] font-semibold tracking-normal leading-none absolute  -right-3 -top-1 ">

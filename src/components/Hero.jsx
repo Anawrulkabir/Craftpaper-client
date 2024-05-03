@@ -19,8 +19,8 @@ const Hero = () => {
   const { user } = useContext(AuthContext)
   return (
     <div className="">
-      <div className="hero lg:min-h-[calc(100vh-250px)] min-h-[calc(65vh-250px)] bg-[#B8CDC7] text-main px-3 ">
-        <div className="hero-content flex-col lg:flex-row-reverse ">
+      <div className="hero lg:min-h-[calc(100vh-250px)] min-h-[calc(65vh-250px)] bg-[#B8CDC7] text-main  ">
+        <div className="hero-content flex-col lg:flex-row-reverse  ">
           {!user && (
             <div className="flex-1 pt-10 ">
               <h1 className="text-5xl font-bold tracking-tighter">
