@@ -42,7 +42,7 @@ const Navbar = () => {
   // }
   return (
     <div className="bg-[#D5E3E0]">
-      <div>
+      <div className="hidden lg:block">
         <ul className="flex gap-4 justify-end px-8 bg-main py-[9px] text-white text-sm font-light">
           {location.pathname !== '/' && (
             <li className="flex-1 text-zinc-300">
@@ -87,8 +87,32 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar px-8 flex justify-between items-center">
-        <div className="">
+
+      <div className="navbar lg:px-8 flex justify-between items-center  lg:flex-row ">
+        <div className="flex gap-12">
+          <div className="drawer lg:hidden block">
+            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content bg-green-200 opacity-50">
+              {/* Page content here */}
+              <label htmlFor="my-drawer" className=" drawer-button"></label>
+            </div>
+            <div className="drawer-side">
+              <label
+                htmlFor="my-drawer"
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              ></label>
+              <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                {/* Sidebar content here */}
+                <li>
+                  <a>Sidebar Item 1</a>
+                </li>
+                <li>
+                  <a>Sidebar Item 2</a>
+                </li>
+              </ul>
+            </div>
+          </div>
           <Link
             to="/"
             className=" text-3xl tracking-tighter font-extrabold leading-[3px] relative"
@@ -100,12 +124,13 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="">
-          <div className="flex items-center justify-center border mx-10 px-[2px] my-0 py-0 rounded-l-full rounded-r-full  ">
+          <div className="hidden lg:flex items-center justify-center border mx-10 px-[2px] my-0 py-0 rounded-l-full rounded-r-full  ">
             <div className=" py-3 px-3 pl-4 rounded-l-full text-zinc-900 text-sm  bg-zinc-200">
               Category
             </div>
             <input
               type="text"
+              // placeholder="Search craft items, categories or brands "
               placeholder="Search craft items, categories or brands "
               className="input w-[400px]  focus:outline-none focus:border-0 rounded-none text-sm "
             />
