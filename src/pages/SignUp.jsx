@@ -221,7 +221,7 @@ const SignUp = () => {
                 : 'block w-full btn btn-disabled p-3 text-center rounded-sm text-gray-900 dark:text-white'
             }
           >
-            Sign in
+            Signup
           </button>
         </form>
         <div className="flex items-center pt-4 space-x-1">

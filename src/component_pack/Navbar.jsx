@@ -43,7 +43,7 @@ const Navbar = () => {
   // }
   return (
     <div className="bg-[#D5E3E0]">
-      <div className="">
+      <div className="hidden lg:block">
         <ul className="flex gap-4 justify-end px-8 bg-main py-[9px] text-white text-sm font-light">
           {location.pathname !== '/' && (
             <li className="flex-1 text-zinc-300">
@@ -87,6 +87,88 @@ const Navbar = () => {
             <a href="">English (US)</a>
           </li>
         </ul>
+      </div>
+
+      <div className="navbar bg-main text-zinc-200 lg:hidden block">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-green-700 text-lg font-bold"
+            >
+              <li>
+                <Link to="/allItem">All Art & Craft</Link>
+              </li>
+              <li>
+                <Link
+                  // onClick={handleAddItemBtn}
+                  className="hover:cursor-pointer"
+                  to="/addItem"
+                >
+                  Publish Your Product
+                </Link>
+              </li>
+              {user && (
+                <li>
+                  <Link to={`/user/${user.email}`}>My Art & Craft List</Link>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+        <div className="navbar-center hidden lg:flex text-black">
+          <ul className="menu menu-horizontal px-1 text-black">
+            <li>
+              <Link to="/allItem">All Art & Craft</Link>
+            </li>
+            <li>
+              <Link
+                // onClick={handleAddItemBtn}
+                className="hover:cursor-pointer"
+                to="/addItem"
+              >
+                Publish Your Product
+              </Link>
+            </li>
+            {user && (
+              <li>
+                <Link to={`/user/${user.email}`}>My Art & Craft List</Link>
+              </li>
+            )}
+            <li className="flex gap-2 items-center">
+              <PiMapPinThin></PiMapPinThin>
+              <a href="">Bangladesh</a>
+            </li>
+            <li className="flex gap-2 items-center">
+              <IoIosGlobe></IoIosGlobe>
+              <a href="">English (US)</a>
+            </li>
+          </ul>
+        </div>
+        <div className="navbar-end pr-2">
+          <ul className="flex flex-row">
+            <li className="flex gap-2 items-center">
+              <IoIosGlobe></IoIosGlobe>
+              <a href="">English (US)</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className="navbar lg:px-8 flex justify-between items-center  lg:flex-row ">
@@ -185,14 +267,14 @@ const Navbar = () => {
             </div>
           )}
           {!user && (
-            <div className="flex gap-5">
+            <div className="flex lg:gap-5 gap-1">
               <Link to="/login">
-                <button className="border px-8 py-2 rounded-md border-black text-base font-medium">
+                <button className="border px-4 lg:px-8  py-2 rounded-md border-black text-base font-medium">
                   Log in
                 </button>
               </Link>
               <Link to="/register">
-                <button className="border border-[#0C482F] px-8 py-2 rounded-md bg-main text-base font-medium text-zinc-200">
+                <button className="border border-[#0C482F] lg:px-8 px-4 lg:py-2 py-2 border-green-900 rounded-md bg-main text-base font-medium text-zinc-200">
                   Free sign up
                 </button>
               </Link>
