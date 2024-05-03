@@ -14,6 +14,8 @@ import Error from './pages/Error'
 import PrivateRoute from './Routes/PrivateRoute'
 import AllItem from './pages/AllItem'
 import MyItem from './pages/MyItem'
+import Favourite from './pages/Favourite'
+import CartCheckOut from './pages/CartCheckOut'
 
 // import MyItems from './components/MyItems'
 
@@ -71,6 +73,24 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`https://craft-house-server.vercel.app/user/${params.email}`),
+      },
+      {
+        path: '/favourite/:email',
+        element: (
+          <PrivateRoute>
+            <Favourite></Favourite>
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`https://craft-house-server.vercel.app/favourite`),
+      },
+      {
+        path: '/cart/:email',
+        element: (
+          <PrivateRoute>
+            <CartCheckOut></CartCheckOut>
+          </PrivateRoute>
+        ),
+        loader: () => fetch(`https://craft-house-server.vercel.app/cart`),
       },
     ],
   },

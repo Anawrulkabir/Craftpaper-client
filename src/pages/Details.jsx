@@ -106,6 +106,20 @@ const Details = () => {
       })
   }
 
+  const handleAddCart = () => {
+    fetch('https://craft-house-server.vercel.app/cart', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        console.log(data)
+      })
+  }
+
   return (
     // <div className="max-h-[cal(100vh - 300px)]">
     //   <div className="flex  gap-10 p-10 ">
@@ -153,7 +167,7 @@ const Details = () => {
                 <button onClick={addFavourite}>Add To Favourite</button>
               </div>
               <div className="border rounded bg-main  text-white px-3 py-2">
-                <button>
+                <button onClick={handleAddCart}>
                   {item.status ? 'Add to Cart' : 'Request for Stock'}
                 </button>
               </div>

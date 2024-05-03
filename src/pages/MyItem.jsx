@@ -64,21 +64,21 @@ const MyItem = () => {
   //   console.log(craftItem)
   // }
 
-  const handleDelete = (_id) => {
-    fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // setItem(data)
-        console.log(data)
-        if (data.deletedCount > 0) {
-          toast.success('Successfull Deleted this Craft item')
-          const remaining = items.filter((item) => item._id !== _id)
-          setItems(remaining)
-        }
-      })
-  }
+  // const handleDelete = (_id) => {
+  //   fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
+  //     method: 'DELETE',
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // setItem(data)
+  //       console.log(data)
+  //       if (data.deletedCount > 0) {
+  //         toast.success('Successfull Deleted this Craft item')
+  //         const remaining = items.filter((item) => item._id !== _id)
+  //         setItems(remaining)
+  //       }
+  //     })
+  // }
 
   return (
     <div>

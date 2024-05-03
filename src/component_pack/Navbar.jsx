@@ -6,6 +6,7 @@ import { AuthContext } from '../provider/AuthProvider'
 import { Link, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md'
+import { CiShoppingCart } from 'react-icons/ci'
 // import { HiMenuAlt2 } from 'react-icons/hi'
 
 const Navbar = () => {
@@ -78,6 +79,18 @@ const Navbar = () => {
               <Link to={`/user/${user.email}`}>My Art & Craft List</Link>
             </li>
           )}
+          {user && (
+            <li>
+              <Link to={`/favourite/${user.email}`}>Bookmarks</Link>
+            </li>
+          )}
+          {user && (
+            <li className="tooltip tooltip-bottom" data-tip="Cart">
+              <Link to={`/cart/${user.email}`}>
+                <CiShoppingCart className="text-xl " />
+              </Link>
+            </li>
+          )}
           <li className="flex gap-2 items-center">
             <PiMapPinThin></PiMapPinThin>
             <a href="">Bangladesh</a>
@@ -130,6 +143,18 @@ const Navbar = () => {
                   <Link to={`/user/${user.email}`}>My Art & Craft List</Link>
                 </li>
               )}
+              {user && (
+                <li>
+                  <Link to={`/favourite/${user.email}`}>Bookmarks</Link>
+                </li>
+              )}
+              {user && (
+                <li className="tooltip tooltip-bottom" data-tip="Cart">
+                  <Link to={`/cart/${user.email}`}>
+                    <CiShoppingCart className="text-xl " />
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
           <div className="">
@@ -167,6 +192,18 @@ const Navbar = () => {
             {user && (
               <li>
                 <Link to={`/user/${user.email}`}>My Art & Craft List</Link>
+              </li>
+            )}
+            {user && (
+              <li>
+                <Link to={`/favourite/${user.email}`}>Bookmarks</Link>
+              </li>
+            )}
+            {user && (
+              <li className="tooltip tooltip-bottom" data-tip="Cart">
+                <Link to={`/cart/${user.email}`}>
+                  <CiShoppingCart className="text-xl " />
+                </Link>
               </li>
             )}
             <li className="flex gap-2 items-center">
