@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import toast, { Toaster } from 'react-hot-toast'
 
@@ -10,8 +10,9 @@ const Details = () => {
   const { user } = useContext(AuthContext)
 
   const { _id } = loadedItem
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault()
     // console.log(item._id)
 
@@ -43,7 +44,10 @@ const Details = () => {
       user,
     }
 
-    fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
+    console.log(craftItem)
+
+    fetch(`https://craft-house-server.vercel.app/update/${_id}`, {
+      // fetch(`http://localhost:3000/update/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
@@ -56,10 +60,25 @@ const Details = () => {
         console.log(data)
         if (data.insertedId) {
           toast.success('Successfull Updated this Craft item')
+          alert('item updated successfully')
         }
       })
 
     // console.log(craftItem)
+  }
+
+  const addFavourite = () => {
+    fetch('https://craft-house-server.vercel.app/favourite', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        console.log(data)
+      })
   }
 
   // const [items, setItems] = useState([])
@@ -69,21 +88,23 @@ const Details = () => {
   //     setItems(data)
   //   })
 
-  // const handleDelete = () => {
-  //   fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
-  //     method: 'DELETE',
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // setItem(data)
-  //       console.log(data)
-  //       if (data.deletedCount > 0) {
-  //         toast.success('Successfull Deleted this Craft item')
-  //         const remaining = items.filter((item) => item._id !== _id)
-  //         setItems(remaining)
-  //       }
-  //     })
-  // }
+  const handleDelete = () => {
+    fetch(`https://craft-house-server.vercel.app/delete/${_id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setItem(data)
+
+        if (data.deletedCount > 0) {
+          toast.success('Successfull Deleted this Craft item')
+          // const remaining = items.filter((item) => item._id !== _id)
+          // setItems(remaining)
+          console.log(data)
+          navigate(location.state ? location.state : '/')
+        }
+      })
+  }
 
   return (
     // <div className="max-h-[cal(100vh - 300px)]">
@@ -129,7 +150,7 @@ const Details = () => {
             </a>
             <div className="flex gap-4 pt-6 items-center ">
               <div className="border rounded bg-main  text-white px-3 py-2">
-                <button>Add To Favourite</button>
+                <button onClick={addFavourite}>Add To Favourite</button>
               </div>
               <div className="border rounded bg-main  text-white px-3 py-2">
                 <button>
@@ -148,7 +169,8 @@ const Details = () => {
                   <dialog id="my_modal_update" className="modal">
                     <div className=" p-6 rounded-xl text-black bg-[#D5E3E0] bg-opacity-65">
                       <form
-                        onSubmit={handleSubmit}
+                        onSubmit={handleUpdate}
+                        // itemID={item._id}
                         className="flex flex-col justify-center items-center gap-y-3 gap-x-5"
                       >
                         <div className="flex gap-4 ">
@@ -259,9 +281,13 @@ const Details = () => {
                         </div>
 
                         <label className="form-control w-full max-w-xs">
-                          <input
+                          {/* <input
                             type="submit"
                             value="Update Item"
+                            className="btn bg-main border-0 hover:bg-green-800 mt-5 text-lg text-white"
+                          /> */}
+                          <input
+                            type="submit"
                             className="btn bg-main border-0 hover:bg-green-800 mt-5 text-lg text-white"
                           />
                         </label>
@@ -278,7 +304,7 @@ const Details = () => {
               )}
               {user.email === item.email && (
                 <div className="border rounded bg-red-500  text-white px-3 py-2">
-                  <button>Delete</button>
+                  <button onClick={handleDelete}>Delete</button>
                 </div>
               )}
             </div>

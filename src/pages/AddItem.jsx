@@ -54,16 +54,16 @@ const AddItem = () => {
   }
 
   return (
-    <div className="h-screen bg-[#EEF9F7]">
+    <div className=" bg-[#EEF9F7]">
       <p className="text-5xl text-center pt-20 mb-10 text-main font-bold">
         Add Craft Items
       </p>
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center gap-y-3 gap-x-5"
+        className="flex flex-col justify-center items-center gap-y-3 lg:gap-x-5 mx-3 "
       >
-        <div className="flex gap-4 ">
+        <div className="flex lg:flex-row flex-col gap-4 w-full ">
           <label className="form-control w-full max-w-xs">
             <input
               required
@@ -92,7 +92,7 @@ const AddItem = () => {
             />
           </label>
         </div>
-        <div className="flex gap-4">
+        <div className="flex lg:flex-row flex-col gap-4 w-full">
           <label className="form-control w-full max-w-xs">
             <input
               required
@@ -121,7 +121,7 @@ const AddItem = () => {
             />
           </label>
         </div>
-        <div className="flex gap-4">
+        <div className="flex lg:flex-row flex-col gap-4 w-full">
           <label className="form-control w-full max-w-xs">
             <input
               required
@@ -150,7 +150,7 @@ const AddItem = () => {
             />
           </label>
         </div>
-        <div className="flex gap-4">
+        <div className="flex lg:flex-row flex-col gap-4 w-full ">
           <div className="form-control flex items-center flex-row gap-5 border rounded-full px-10">
             <p>Customization</p>
 
@@ -171,7 +171,7 @@ const AddItem = () => {
           </div>
         </div>
 
-        <label className="form-control w-full max-w-xs">
+        <label className="form-control w-full lg:mb-0 mb-12">
           <input
             type="submit"
             value="Add this item"
