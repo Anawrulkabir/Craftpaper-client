@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider'
 import toast from 'react-hot-toast'
-import { HiMenuAlt2 } from 'react-icons/hi'
+// import { HiMenuAlt2 } from 'react-icons/hi'
 
 const Nav = () => {
   const { logOut, user } = useContext(AuthContext)

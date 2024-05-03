@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="hero lg:min-h-[calc(100vh-250px)] min-h-[calc(65vh-250px)] bg-[#B8CDC7] text-main px-3 ">
         <div className="hero-content flex-col lg:flex-row-reverse ">
           {!user && (
-            <div className="flex-1 pt-10">
+            <div className="flex-1 pt-10 ">
               <h1 className="text-5xl font-bold tracking-tighter">
                 <Typewriter
                   cursor
@@ -58,13 +58,13 @@ const Hero = () => {
           )}
 
           {!user && (
-            <div className="flex-1 pb-6 lg:pb-0">
-              <div className="border w-96  h-96  relative bg-zinc-50 rounded-2xl border-green-700">
+            <div className="flex-1 pb-6 lg:pb-0 ">
+              <div className="border lg:w-96 w-80  lg:h-96 h-96  relative bg-zinc-50 rounded-2xl border-green-700">
                 <div className="flex items-center justify-between mx-5 my-5 scale-60 lg:scale-100">
                   <div className="border rounded-full bg-zinc-800 text-zinc-50 h-8 w-8 flex items-center justify-center text-xl ">
                     <p>C</p>
                   </div>
-                  <div className="skeleton h-8 w-2/3"></div>
+                  <div className="skeleton h-8 w-2/3 "></div>
                   <div className="skeleton w-10 h-10 rounded-full shrink-0"></div>
                 </div>
 
@@ -72,11 +72,11 @@ const Hero = () => {
                   <div className="flex flex-col gap-4 w-52  ">
                     <div className="skeleton h-32 w-full"></div>
                     <div className="skeleton h-4 w-28"></div>
-                    <div className="skeleton h-4 w-full "></div>
+                    <div className="skeleton h-4 w-full  "></div>
                     <div className="skeleton h-4 w-full"></div>
                   </div>
                 </div>
-                <div className=" border-green-800  w-32  lg:w-64 h-32 lg:h-64 absolute lg:right-0 lg:top-1/2 lg:left-1/2 lg:-translate-y-1/3 lg:translate-x-1/3 bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 scale-90 lg:scale-100 ">
+                <div className=" w-32  lg:w-64 h-32 lg:h-64 absolute lg:right-0 lg:top-1/2 lg:left-1/2 lg:-translate-y-1/3 lg:translate-x-1/3 top-1/2  translate-x-[90%] scale-[65%] lg:scale-100">
                   <Swiper
                     effect={'cards'}
                     grabCursor={true}
@@ -113,6 +113,7 @@ const Hero = () => {
               </div>
             </div>
           )}
+
           {user && (
             <div className="flex-1 flex items-center justify-center flex-col ">
               {/* <h1 className="text-5xl font-bold">Hey {user.displayName}</h1> */}

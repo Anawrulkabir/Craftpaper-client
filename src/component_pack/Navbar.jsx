@@ -6,7 +6,7 @@ import { AuthContext } from '../provider/AuthProvider'
 import { Link, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { MdOutlineKeyboardArrowLeft } from 'react-icons/md'
-import { HiMenuAlt2 } from 'react-icons/hi'
+// import { HiMenuAlt2 } from 'react-icons/hi'
 
 const Navbar = () => {
   const { user } = useContext(AuthContext)
