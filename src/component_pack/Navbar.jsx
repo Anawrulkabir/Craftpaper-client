@@ -192,7 +192,7 @@ const Navbar = () => {
         <div className="flex gap-12">
           <Link
             to="/"
-            className=" text-3xl tracking-tighter font-extrabold leading-[3px] relative"
+            className=" lg:text-3xl text-2xl tracking-tighter font-extrabold leading-[3px] relative"
           >
             craftpaper
             <span className="text-[6px] font-semibold tracking-normal leading-none absolute  -right-3 -top-1 ">
@@ -286,12 +286,12 @@ const Navbar = () => {
           {!user && (
             <div className="flex lg:gap-5 gap-1">
               <Link to="/login">
-                <button className="border px-4 lg:px-8  py-2 rounded-md border-black text-base font-medium">
+                <button className="border px-2 lg:px-8  py-2 rounded-md border-black text-base font-medium">
                   Log in
                 </button>
               </Link>
               <Link to="/register">
-                <button className="border border-[#0C482F] lg:px-8 px-4 lg:py-2 py-2 border-green-900 rounded-md bg-main text-base font-medium text-zinc-200">
+                <button className="border border-[#0C482F] lg:px-8 px-2 lg:py-2 py-2 rounded-md bg-main text-base font-medium text-zinc-200">
                   Free sign up
                 </button>
               </Link>

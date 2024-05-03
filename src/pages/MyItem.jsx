@@ -180,9 +180,12 @@ const MyItem = () => {
                     className=" w-full"
                   />
                 </figure>
-                <div className="lg:card-body border p-3">
+                <div className="lg:card-body  p-3">
                   {/* <div className="card-actions justify-start "> */}
-                  <div className="badge badge-outline  text-zinc-800 lg:text-xs border-green-500 text-[10px] mb-2 lg:mb-0">
+                  {/* <div className="badge badge-outline  text-zinc-800 lg:text-xs border-green-500 text-[10px] mb-2 lg:mb-0">
+                    {item.category}
+                  </div> */}
+                  <div className="badge badge-outline  text-zinc-800 lg:text-xs border-green-500 lg:text-[10px] text-[8px] mb-2 lg:mb-0 lg:leading-none leading-tight lg:tracking-normal tracking-tighter ">
                     {item.category}
                   </div>
                   {/* <div className="badge badge-outline">Products</div> */}
