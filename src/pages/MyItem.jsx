@@ -46,7 +46,7 @@ const MyItem = () => {
   //     user,
   //   }
 
-  //   fetch('${process.env.VITE_API_URL}/items/${item._id}/update', {
+  //   fetch('${import.meta.env.VITE_API_URL}/items/${item._id}/update', {
   //     method: 'PUT',
   //     headers: {
   //       'content-type': 'application/json',
@@ -65,7 +65,7 @@ const MyItem = () => {
   // }
 
   // const handleDelete = (_id) => {
-  //   fetch(`${process.env.VITE_API_URL}/items/${_id}`, {
+  //   fetch(`${import.meta.env.VITE_API_URL}/items/${_id}`, {
   //     method: 'DELETE',
   //   })
   //     .then((res) => res.json())

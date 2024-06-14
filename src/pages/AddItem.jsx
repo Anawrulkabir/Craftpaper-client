@@ -35,7 +35,7 @@ const AddItem = () => {
       user,
     }
 
-    fetch('${process.env.VITE_API_URL}/items', {
+    fetch('${import.meta.env.VITE_API_URL}/items', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
