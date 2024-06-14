@@ -46,7 +46,7 @@ const Details = () => {
 
     console.log(craftItem)
 
-    fetch(`https://craft-house-server.vercel.app/update/${_id}`, {
+    fetch(`${process.env.VITE_API_URL}/update/${_id}`, {
       // fetch(`http://localhost:3000/update/${_id}`, {
       method: 'PUT',
       headers: {
@@ -68,7 +68,7 @@ const Details = () => {
   }
 
   const addFavourite = () => {
-    fetch('https://craft-house-server.vercel.app/favourite', {
+    fetch('${process.env.VITE_API_URL}/favourite', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -82,14 +82,14 @@ const Details = () => {
   }
 
   // const [items, setItems] = useState([])
-  // fetch('https://craft-house-server.vercel.app/items')
+  // fetch('${process.env.VITE_API_URL}/items')
   //   .then((res) => res.json())
   //   .then((data) => {
   //     setItems(data)
   //   })
 
   const handleDelete = () => {
-    fetch(`https://craft-house-server.vercel.app/delete/${_id}`, {
+    fetch(`${process.env.VITE_API_URL}/delete/${_id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -107,7 +107,7 @@ const Details = () => {
   }
 
   const handleAddCart = () => {
-    fetch('https://craft-house-server.vercel.app/cart', {
+    fetch('${process.env.VITE_API_URL}/cart', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

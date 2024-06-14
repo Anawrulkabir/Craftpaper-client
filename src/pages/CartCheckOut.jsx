@@ -39,7 +39,7 @@ const CartCheckOut = () => {
   //     user,
   //   }
 
-  //   fetch('https://craft-house-server.vercel.app/items/${item._id}/update', {
+  //   fetch('${process.env.VITE_API_URL}/items/${item._id}/update', {
   //     method: 'PUT',
   //     headers: {
   //       'content-type': 'application/json',
@@ -58,7 +58,7 @@ const CartCheckOut = () => {
   // }
 
   // const handleDelete = (_id) => {
-  //   fetch(`https://craft-house-server.vercel.app/items/${_id}`, {
+  //   fetch(`${process.env.VITE_API_URL}/items/${_id}`, {
   //     method: 'DELETE',
   //   })
   //     .then((res) => res.json())

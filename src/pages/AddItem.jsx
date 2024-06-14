@@ -35,7 +35,7 @@ const AddItem = () => {
       user,
     }
 
-    fetch('https://craft-house-server.vercel.app/items', {
+    fetch('${process.env.VITE_API_URL}/items', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

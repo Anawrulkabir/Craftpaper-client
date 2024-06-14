@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('https://craft-house-server.vercel.app/items'),
+        loader: () => fetch(`${process.env.VITE_API_URL}/items`),
         // loader: () => fetch('http://localhost:3000/items'),
       },
       {
@@ -57,12 +57,12 @@ const router = createBrowserRouter([
         // loader: ({ params }) =>
         //   fetch(`http://localhost:3000/items/${params.id}`),
         loader: ({ params }) =>
-          fetch(`https://craft-house-server.vercel.app/items/${params.id}`),
+          fetch(`${process.env.VITE_API_URL}/items/${params.id}`),
       },
       {
         path: '/allItem',
         element: <AllItem />,
-        loader: () => fetch('https://craft-house-server.vercel.app/items'),
+        loader: () => fetch(`${process.env.VITE_API_URL}/items`),
       },
       {
         path: '/user/:email',
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://craft-house-server.vercel.app/user/${params.email}`),
+          fetch(`${process.env.VITE_API_URL}/user/${params.email}`),
       },
       {
         path: '/favourite/:email',
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
             <Favourite></Favourite>
           </PrivateRoute>
         ),
-        loader: () => fetch(`https://craft-house-server.vercel.app/favourite`),
+        loader: () => fetch(`${process.env.VITE_API_URL}/favourite`),
       },
       {
         path: '/cart/:email',
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
             <CartCheckOut></CartCheckOut>
           </PrivateRoute>
         ),
-        loader: () => fetch(`https://craft-house-server.vercel.app/cart`),
+        loader: () => fetch(`${process.env.VITE_API_URL}/cart`),
       },
     ],
   },
